@@ -1,6 +1,7 @@
 # 2021.02.08. Baekjoon algorithm problem #7568
 # Size comparison
 
+
 N=int(input())
 person=[]
 rank=[]
