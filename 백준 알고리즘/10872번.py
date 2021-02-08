@@ -1,9 +1,8 @@
-# 2021.02.08. Baekjoon algorithm problem #10872
-# Factorial
+# 2021.02.08. Baekjoon algorithm problem #10870
+# Fibonacci's number
 
-N=int(input())
-S=1
-while N!=0:
-    S=S*N
-    N-=1
-print(S)
+n=int(input())
+s=[0,1]
+for i in range(n):
+    s.append(s[i]+s[i+1])
+print(s[n])
