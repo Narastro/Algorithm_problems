@@ -1,6 +1,7 @@
 # 2021.02.09. Baekjoon algorithm problem #10989
 # To sort numbers 3rd
 
+
 import sys
 
 N=int(sys.stdin.readline())
