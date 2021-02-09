@@ -1,6 +1,7 @@
 # 2021.02.08. Baekjoon algorithm problem #11729
 # Tower of Hanoi
 
+
 N=int(input())
 def hanoi(num,start,via,arrival):
     if num==1:
