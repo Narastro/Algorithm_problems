@@ -2,6 +2,7 @@
 # Program for finding Prime number
 # If there is none, it will print -1
 
+
 M=int(input())
 N=int(input())
 s=[]
