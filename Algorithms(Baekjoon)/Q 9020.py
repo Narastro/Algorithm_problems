@@ -1,6 +1,7 @@
 # 2021.02.05. Baekjoon algorithm problem #9020
 # Goldbach's conjecture
 
+
 # Sieve of Eratosthenes
 def isPrime(a:int):
   if(a<2):
