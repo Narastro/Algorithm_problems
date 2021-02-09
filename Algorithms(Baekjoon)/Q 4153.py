@@ -1,6 +1,7 @@
 # 2021.02.06. Baekjoon algorithm problem #4153
 # A right-angled triangle
 
+
 while True:
     x,y,z=map(int,input().split())
     if x==0 and y==0 and z==0:              # input
