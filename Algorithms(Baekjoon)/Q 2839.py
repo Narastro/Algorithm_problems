@@ -1,11 +1,14 @@
+# 2021.02.07. Baekjoon algorithm problem #2839
+# Sugar
+
 sugar=int(input())
 bag = 0
 while sugar >= 0 :
-    if sugar % 5 == 0 :  # 5의 배수이면
-        bag += (sugar // 5)  # 5로 나눈 몫을 구해야 정수가 됨
+    if sugar % 5 == 0 :  # 5
+        bag += (sugar // 5)
         print(bag)
         break
     sugar -= 3
-    bag += 1  # 5의 배수가 될 때까지 설탕-3, 봉지+1
+    bag += 1
 else :
     print(-1)
