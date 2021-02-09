@@ -1,6 +1,7 @@
 # 2021.02.08. Baekjoon algorithm problem #2231
 # Digit Generator
 
+
 import math
 N=int(input())
 # Case of 1
