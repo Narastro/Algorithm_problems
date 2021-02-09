@@ -1,6 +1,7 @@
 # 2021.02.09. Baekjoon algorithm problem #1436
 # Shom, the movie director
 
+
 N=int(input())
 sentence = 666      # first
 
