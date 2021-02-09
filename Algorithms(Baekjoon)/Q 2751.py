@@ -1,6 +1,7 @@
 # 2021.02.09. Baekjoon algorithm problem #2751
 # To sort numbers 2nd
 
+
 import sys
 
 N=int(sys.stdin.readline())
