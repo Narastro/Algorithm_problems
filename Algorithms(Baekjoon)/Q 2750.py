@@ -1,6 +1,7 @@
 # 2021.02.09. Baekjoon algorithm problem #2750
 # To sort numbers
 
+
 N=int(input())
 num=[]
 for i in range(N):
