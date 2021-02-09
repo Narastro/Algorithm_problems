@@ -1,7 +1,6 @@
 # 2021.02.08. Baekjoon algorithm problem #2798
 # Blackjack
 
-
 N,M=map(int,input().split())
 num=list(map(int,input().split()))
 max=0
