@@ -1,6 +1,7 @@
 # 2021.02.11. Baekjoon algorithm problem #15649
 # N and M 1 (backtracking)
 
+
 N, M = map(int, input().split())
 visited = [False] * N           # visit point check
 result = []
