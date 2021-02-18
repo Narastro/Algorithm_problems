@@ -1,5 +1,6 @@
-# 2021.02.17. Baekjoon algorithm problem #1920
+# 2021.02.18. Baekjoon algorithm problem #1920
 # Find number
+
 
 import sys
 N=int(input())
