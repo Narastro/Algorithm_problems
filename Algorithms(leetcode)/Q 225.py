@@ -1,6 +1,7 @@
 # 2021.02.26. Leetcode algorithm problem #225
 # Implement Stacks using Queues
 
+
 import collections
 
 class Mystack:
