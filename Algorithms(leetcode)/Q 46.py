@@ -10,11 +10,11 @@ def pemute(nums:list[int])->list[int]:
             results.append(prev_elements[:])
         # recursive
         for i in elements:
-            netx_elements = elements[:]
-            netx_elements.remove(i)
+            next_elements = elements[:]
+            next_elements.remove(i)
 
             prev_elements.append(i)
-            DFS(netx_elements)
+            DFS(next_elements)
             prev_elements.pop()
 
     DFS(nums)
