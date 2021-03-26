@@ -26,8 +26,6 @@ def solution(s):
                 if cnt > 0:
                     sub_length -= cnt * cut_size - len(str(cnt + 1))
                     cnt = 0
-
         length.append(sub_length)
-
     answer = min(length)
     return answer
