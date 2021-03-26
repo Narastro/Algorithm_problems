@@ -16,10 +16,12 @@ def solution(s):
         sub_length = LENGTH
         # comparing splited_strings
         for j in range(LENGTH_SPLIT - 1):
+            # a case of same
             if splited[j] == splited[j + 1]:
                 cnt += 1
                 if j == LENGTH_SPLIT - 2:
                     sub_length -= cnt * cut_size - len(str(cnt + 1))
+            # in the other case
             else:
                 if cnt > 0:
                     sub_length -= cnt * cut_size - len(str(cnt + 1))
