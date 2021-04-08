@@ -37,5 +37,3 @@ def solution(m, musicinfos):
         return answer
     else:
         return answer.split('//')[0]
-
-print(solution("ABC#",["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
