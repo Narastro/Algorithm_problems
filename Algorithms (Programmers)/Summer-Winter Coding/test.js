@@ -5,6 +5,6 @@ function solution(w,h){
 
         let arr = [10,13];
         for (let ac of arr){
-            console.log(`${ac}`);
+            document.write(`${ac}`);
         }
 solution(8,12);
