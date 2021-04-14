@@ -22,5 +22,3 @@ def solution(dirs):
         direction.add((x, y, dx, dy))
         direction.add((dx, dy, x, y))
     return len(direction)/2
-    
-print(solution())
