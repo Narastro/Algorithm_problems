@@ -13,7 +13,7 @@ def maxDepth(root:TreeNode) -> int:
         depth += 1
         for _ in range(len(queue)):
             cur_root = queue.popleft()
-            if cur_root,left:
+            if cur_root.left:
                 queue.append(cur_root.left)
             if cur_root.right:
                 queue.append(cur_root.right)
