@@ -15,12 +15,18 @@ def bfs(start,end):
 
         if v == end:
             return time
-        
+            
+        v_2 = v * 2
+        if v_2 < MAX_SIZE and v_2 not in visited:
+            Q.appendleft((v_2, time))
+            visited[v_2] = time
+
         for dv in [v-1,v+1]:
             if dv not in visited and 0<=dv<MAX_SIZE:
-                Q.append(dv,time+1)
+                Q.append((dv,time+1))
+                visited[dv] = time + 1
 
-
+        
 
 N,K = map(int,input().split())
 print(bfs(N,K))
