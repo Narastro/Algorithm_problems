@@ -65,6 +65,9 @@ for i in range(R):
 time = 0
 for move in moves:
     time += 1
+    for ww in range(R):
+        print(*board[ww])
+    print('\n')
     if move_me(move) == -1:
         print(f"kraj {time}")
         break
