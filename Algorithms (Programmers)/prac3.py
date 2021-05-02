@@ -20,5 +20,3 @@ def solution(ads):
             time += 5
 
     return answer
-
-print(solution([[0, 1], [0, 2], [6, 3], [8, 4]]))
