@@ -54,3 +54,8 @@ def solution(numbers):
 
 
 print(solution([2,7]))
+
+#######################333
+
+##3번
+
