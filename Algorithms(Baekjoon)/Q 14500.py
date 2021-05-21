@@ -1,5 +1,5 @@
 # 2021.05.19. Baekjoon algorithm problem #14500
-# 테트로미노
+# 테트로미노 (*)
 
 
 import sys
