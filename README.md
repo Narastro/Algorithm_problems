@@ -1,5 +1,5 @@
-https://img.shields.io/badge/python-3.9-blue
-https://img.shields.io/badge/javascript-ES6-orange
+https://img.shields.io/badge/python-3.9-blue.svg
+https://img.shields.io/badge/javascript-ES6-orange.svg
 
 # 알고리즘 문제풀이
 
