@@ -4,7 +4,7 @@ https://img.shields.io/badge/javascript-ES6-orange
 # 알고리즘 문제풀이
 
 ## 현재 티어
-https://static.solved.ac/tier_small/12.svg
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=advice02)](https://solved.ac/advice02/)
 
 ## 목표 진도
 
