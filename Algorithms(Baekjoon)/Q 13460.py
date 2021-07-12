@@ -45,6 +45,7 @@ for i in range(n):
             ri, rj = i, j
         if a[j] == "B":
             bi, bj = i, j
+            
 q = deque()
 q.append([ri, rj, bi, bj, 1])
 visit[ri][rj][bi][bj] = True
