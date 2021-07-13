@@ -1,25 +1,27 @@
-from collections import defaultdict
-def solution(S,C):
-    answer = []
-    name_list = S.split(',')
-    name_dic = defaultdict(int)
-    for name in name_list:
-        first_name = name.split()[0]
-        last_name = name.split()[-1]
-        index = ''
-        if first_name+last_name in name_dic:
-            name_dic[first_name+last_name] += 1
-            index = str(name_dic[first_name+last_name])
-        else:
-            name_dic[first_name+last_name] = 1
 
-        address = ' <'+first_name.lower()+'.'+last_name.replace('-','').lower()+index+'@'+C.lower()+'.com>'
-        answer.append(name+address)
-    return ','.join(answer)
+from collections import defaultdict,deque
+# def solution(S,C):
+#     answer = []
+#     name_list = S.split(',')
+#     name_dic = defaultdict(int)
+#     for name in name_list:
+#         first_name = name.split()[0]
+#         last_name = name.split()[-1]
+#         index = ''
+#         if first_name+last_name in name_dic:
+#             name_dic[first_name+last_name] += 1
+#             index = str(name_dic[first_name+last_name])
+#         else:
+#             name_dic[first_name+last_name] = 1
 
-print(solution('John Doe', 'Example'))
+#         address = ' <'+first_name.lower()+'.'+last_name.replace('-','').lower()+index+'@'+C.lower()+'.com>'
+#         answer.append(name+address)
+#     return ','.join(answer)
 
-        
+# print(solution('John Doe', 'Example'))
+
+
+
 # def solution(S):
 #     file_list = S.split('\n')
 #     answer = 0
@@ -87,6 +89,7 @@ print(solution('John Doe', 'Example'))
 #     return answer
 
 # print(solution("baaab"))
+
 
 
 
