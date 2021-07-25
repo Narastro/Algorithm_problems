@@ -2,7 +2,7 @@
 # Hide-and-seek
 
 from collections import deque
-MAX_SIZE = 100000
+MAX_SIZE = 100001
 
 def bfs(start,end):
     Q = deque()
