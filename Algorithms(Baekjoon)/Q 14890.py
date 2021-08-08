@@ -8,11 +8,8 @@ flat = 0
 cur = 0
 for i in range(N):
     for j in range(N):
-        if cur and tablep[i][j] == cur:
+        if cur and table[i][j] == cur:
             flat += 1
         elif cur != table[i][j]:
             cur = table[i][j]
             flat = 0
-
-        if (cur)
-        table[i][j]
