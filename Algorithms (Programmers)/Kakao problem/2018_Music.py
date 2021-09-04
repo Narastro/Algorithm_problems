@@ -37,3 +37,6 @@ def solution(m, musicinfos):
         return answer
     else:
         return answer.split('//')[0]
+
+
+print(solution())
