@@ -2,11 +2,12 @@
 # 마법사 상어와 블리자드
 
 import sys
+import re
 from collections import deque
 input = sys.stdin.readline
 N, M = map(int, input().split())
 
-table = [list(map(int, input().split())) for _ in range(N)]
+table = [list(map(str, input().split())) for _ in range(N)]
 attacks = [list(map(int, input().split())) for _ in range(M)]
 
 score = [0, 0, 0]
@@ -15,10 +16,10 @@ score = [0, 0, 0]
 def blizard_attack(N, d, s):
     dx, dy = [0, 0, -1, 1], [-1, 1, 0, 0]
     x, y = N//2, N//2
-    for i in range(s):
+    for _ in range(s):
         x += dx[d-1]
         y += dy[d-1]
-        table[y][x] = 0
+        table[y][x] = '0'
 
 
 def get_table_item(N):
@@ -32,7 +33,7 @@ def get_table_item(N):
         for _ in range(n):
             x += dx[dir]
             y += dy[dir]
-            if table[y][x] != 0:
+            if table[y][x] != '0':
                 Q.append(str(table[y][x]))
         dir = (dir + 1) % 4
         cnt -= 1
@@ -44,8 +45,7 @@ def get_table_item(N):
 
 
 def remove_overlap(string, num):
-    # 문자열이 들어왔을 때 4개 이상인 문자열을 없애주는 함수 짜야됨
-    return
+    return re.sub(num*4+"+", "", string)
 
 
 def explosion(queue):
@@ -66,10 +66,31 @@ def explosion(queue):
             return deque(new_queue)
 
 
+def changeQueue(queue):
+    cnt = 1
+    num = queue.popleft()
+    new_queue = deque()
+    while queue:
+        this_num = queue.popleft()
+        if this_num != num:
+            new_queue.append(str(cnt))
+            new_queue.append(num)
+            cnt = 1
+            num = this_num
+        else:
+            cnt += 1
+    if cnt == 2:
+        new_queue.append(str(cnt))
+        new_queue.append(num)
+
+    return new_queue
+
+
 def arrange_table(N):
     queue = get_table_item(N)
     queue = explosion(queue)
-    print(queue)
+    queue = changeQueue(queue)
+    print(queue, len(queue))
     x, y = N//2, N//2
     dx, dy = [-1, 0, 1, 0], [0, 1, 0, -1]
     cnt = 2
@@ -80,7 +101,7 @@ def arrange_table(N):
             x += dx[dir]
             y += dy[dir]
             if not queue:
-                table[y][x] = 0
+                table[y][x] = '0'
                 continue
             table[y][x] = queue.popleft()
         dir = (dir + 1) % 4
@@ -90,8 +111,19 @@ def arrange_table(N):
             n += 1
             cnt = 2
 
+    for _ in range(n-1):
+        x += dx[dir]
+        y += dy[dir]
+        if not queue:
+            table[y][x] = '0'
+            continue
+        table[y][x] = queue.popleft()
 
-blizard_attack(N, 2, 2)
-arrange_table(N)
 
-print(table)
+for d, s in attacks:
+    blizard_attack(N, d, s)
+    arrange_table(N)
+    print()
+    for w in range(N):
+        print(table[w])
+print(sum(score))
