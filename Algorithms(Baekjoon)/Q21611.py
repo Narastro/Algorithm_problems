@@ -41,6 +41,13 @@ def get_table_item(N):
         if cnt == 0:
             n += 1
             cnt = 2
+
+    for _ in range(n-1):
+        x += dx[dir]
+        y += dy[dir]
+        if table[y][x] != '0':
+            Q.append(str(table[y][x]))
+
     return Q
 
 
@@ -49,26 +56,34 @@ def remove_overlap(string, num):
 
 
 def explosion(queue):
-    new_queue = queue
+    pre_queue = ''.join(queue)
+    new_queue = deque()
 
     while True:
-        l = len(new_queue)
-        new_queue = remove_overlap(''.join(new_queue), '1')
-        after1 = len(new_queue)
+        l = len(pre_queue)
+        after1_Q = remove_overlap(pre_queue, '1')
+        after1 = len(after1_Q)
         score[0] += l-after1
-        new_queue = remove_overlap(new_queue, '2')
-        after2 = len(new_queue)
-        score[1] += 2*(after1-after2)
-        new_queue = remove_overlap(new_queue, '3')
-        score[2] += after2 - len(new_queue)
+        after2_Q = remove_overlap(pre_queue, '2')
+        after2 = len(after2_Q)
+        score[1] += 2*(l-after2)
+        after3_Q = remove_overlap(pre_queue, '3')
+        after3 = len(after3_Q)
+        score[2] += 3*(l - after3)
+
+        new_queue = re.sub('1111+|2222+|3333+', "", pre_queue)
 
         if l == len(new_queue):
             return deque(new_queue)
+        else:
+            pre_queue = new_queue
 
 
 def changeQueue(queue):
     cnt = 1
-    num = queue.popleft()
+    num = 0
+    if queue:
+        num = queue.popleft()
     new_queue = deque()
     while queue:
         this_num = queue.popleft()
@@ -79,7 +94,8 @@ def changeQueue(queue):
             num = this_num
         else:
             cnt += 1
-    if cnt == 2:
+
+    if num != 0:
         new_queue.append(str(cnt))
         new_queue.append(num)
 
@@ -90,7 +106,6 @@ def arrange_table(N):
     queue = get_table_item(N)
     queue = explosion(queue)
     queue = changeQueue(queue)
-    print(queue, len(queue))
     x, y = N//2, N//2
     dx, dy = [-1, 0, 1, 0], [0, 1, 0, -1]
     cnt = 2
@@ -123,7 +138,4 @@ def arrange_table(N):
 for d, s in attacks:
     blizard_attack(N, d, s)
     arrange_table(N)
-    print()
-    for w in range(N):
-        print(table[w])
 print(sum(score))
