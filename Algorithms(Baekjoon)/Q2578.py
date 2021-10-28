@@ -3,8 +3,3 @@
 
 table = [list(map(int, input().split())) for _ in range(5)]
 inputs = [list(map(int, input().split())) for _ in range(5)]
-
-
-def isBingo(i, j):
-    for k in range(5):
-        table[j][i]
