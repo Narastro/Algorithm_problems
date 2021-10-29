@@ -1,0 +1,1 @@
+function solution(k, dungeons) {}
