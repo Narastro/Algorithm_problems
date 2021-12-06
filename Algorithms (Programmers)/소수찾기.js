@@ -1,5 +1,6 @@
 const isPrimeNumber = (num) => {
-  if (num <= 2) return true;
+  if (num < 2) return false;
+  if (num === 2) return true;
   for (let i = 2; i < Math.sqrt(num); i++) {
     if (num % i === 0) return false;
   }
@@ -22,15 +23,17 @@ const Permutations = (arr, selectNumber) => {
 
 function solution(numbers) {
   let answer = 0;
-  const stringNumbers = new Set();
+  const numberArr = new Set();
   for (let i = 1; i <= numbers.length; i++) {
-    stringNumbers.add(Permutations(numbers.split(""), i).join(""));
-  }
-  for (let numStr of stringNumbers) {
-    if (isPrimeNumber(Number(numStr))) {
-      console.log(numStr);
-      answer += 1;
+    const permNumArr = Permutations(numbers.split(""), i);
+    for (let perArr of permNumArr) {
+      numberArr.add(Number(perArr.join("")));
     }
+  }
+  for (let num of numberArr) {
+    if (isPrimeNumber(Number(num))) answer += 1;
   }
   return answer;
 }
+
+console.log(Permutations("17".split(""), 2)[0].join(""));
