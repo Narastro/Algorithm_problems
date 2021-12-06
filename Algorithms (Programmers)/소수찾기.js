@@ -1,7 +1,7 @@
 const isPrimeNumber = (num) => {
   if (num < 2) return false;
   if (num === 2) return true;
-  for (let i = 2; i < Math.sqrt(num); i++) {
+  for (let i = 2; i <= Math.sqrt(num); i++) {
     if (num % i === 0) return false;
   }
   return true;
@@ -31,9 +31,9 @@ function solution(numbers) {
     }
   }
   for (let num of numberArr) {
-    if (isPrimeNumber(Number(num))) answer += 1;
+    if (isPrimeNumber(num)) answer += 1;
   }
   return answer;
 }
 
-console.log(Permutations("17".split(""), 2)[0].join(""));
+console.log(Math.sqrt(4));
