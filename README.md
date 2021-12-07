@@ -5,4 +5,4 @@
 
 ## 현재 진행중
 
-[백준 문제집](https://github.com/tony9402/baekjoon) 푸는 중
+JavaScript로 프로그래머스 푸는중
