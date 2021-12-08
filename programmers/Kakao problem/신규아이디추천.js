@@ -1,3 +1,7 @@
+/* 2021.12.08. 2018 KAKAO Blind Recruitment
+ * 신규 아이디 추천
+ */
+
 const step1 = (str) => str.toLowerCase();
 
 const step2 = (str) => str.replace(/[^a-z\d-_.]/g, "");
