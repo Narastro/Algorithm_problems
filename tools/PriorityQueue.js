@@ -1,108 +1,94 @@
-class PriorityQueue {
-  constructor(comp) {
+class Node {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+// 힙의 특징 : 부모가 항상 자식보다 작거나 같은 트리 기반의 자료 구조
+class Heap {
+  constructor() {
     this.heap = [];
-    this.comp = comp;
-    if (comp == undefined) {
-      this.comp = (a, b) => {
-        return a - b;
-      };
-    }
+  }
+
+  push(value) {
+    const node = new Node(value);
+    this.heap.push(node);
+    this.#heapifyUp();
   }
 
   pop() {
-    if (this.isEmpty()) {
-      return null;
+    const count = this.heap.length;
+    const rootNode = this.heap[0];
+
+    if (count <= 0) return undefined;
+    if (count === 1) this.heap = [];
+    else {
+      this.heap[0] = this.heap.pop();
+      this.#heapifyDown();
     }
-    let min = this.heap[0];
-    let last = this.heap.pop();
-    if (this.size() != 0) {
-      this.heap[0] = last;
-      this.downHeap(0);
-    }
-    return min;
+    return rootNode;
   }
 
-  size() {
-    return this.heap.length;
-  }
+  #heapifyUp() {
+    let index = this.heap.length - 1;
+    const lastInsertedNode = this.heap[index];
 
-  insert(value) {
-    this.heap.push(value);
-    this.upHeap(this.size() - 1);
-  }
-
-  downHeap(pos) {
-    while (this.isInternal(pos)) {
-      let s = null;
-
-      //왼쪽과 오른쪽 자식중에 작은 것을 s에 넣는다.
-      if (!this.hasRight(pos)) {
-        s = this.left(pos);
-      } else if (
-        this.comp(this.heap[this.left(pos)], this.heap[this.right(pos)]) <= 0
-      ) {
-        s = this.left(pos);
-      } else {
-        s = this.right(pos);
-      }
-      if (this.comp(this.heap[s], this.heap[pos]) < 0) {
-        this.swap(pos, s);
-        pos = s;
-      } else {
-        break;
-      }
+    while (index > 0) {
+      const parentIndex = this.#getParentIndex(index);
+      if (this.heap[parentIndex].value > lastInsertedNode.value) {
+        this.heap[index] = this.heap[parentIndex];
+        index = parentIndex;
+      } else break;
     }
-  }
-  upHeap(pos) {
-    while (!this.isRoot(pos)) {
-      let p = this.parent(pos);
-      if (this.comp(this.heap[p], this.heap[pos]) <= 0) {
-        break;
-      }
-      this.swap(p, pos);
-      pos = p;
-    }
-  }
-  swap(x, y) {
-    let tmp = this.heap[x];
-    this.heap[x] = this.heap[y];
-    this.heap[y] = tmp;
-  }
-  parent(pos) {
-    return parseInt((pos - 1) / 2);
-  }
-  left(pos) {
-    return 2 * pos + 1;
-  }
-  right(pos) {
-    return 2 * pos + 2;
+
+    this.heap[index] = lastInsertedNode;
   }
 
-  isInternal(pos) {
-    return this.hasLeft(pos);
-  }
-  isRoot(pos) {
-    if (pos == 0) return true;
-    return false;
-  }
-  hasLeft(pos) {
-    if (this.left(pos) < this.size()) {
-      return true;
+  #heapifyDown() {
+    let index = 0;
+    const count = this.heap.length;
+    const rootNode = this.heap[index];
+
+    while (this.#getLeftChildIndex(index) < count) {
+      const leftChildIndex = this.#getLeftChildIndex(index);
+      const rightChildIndex = this.#getRightChildIndex(index);
+      const smallerChildIndex =
+        rightChildIndex < count &&
+        this.heap[rightChildIndex].value < this.heap[leftChildIndex].value
+          ? rightChildIndex
+          : leftChildIndex;
+
+      if (this.heap[smallerChildIndex].value <= rootNode.value) {
+        this.heap[index] = this.heap[smallerChildIndex];
+        index = smallerChildIndex;
+      } else break;
     }
-    return false;
-  }
-  hasRight(pos) {
-    if (this.right(pos) < this.size()) {
-      return true;
-    }
-    return false;
-  }
-  isEmpty() {
-    return this.heap.length == 0;
+
+    this.heap[index] = rootNode;
   }
 
-  min() {
+  #getLeftChildIndex(parentIndex) {
+    return parentIndex * 2 + 1;
+  }
+  #getRightChildIndex(parentIndex) {
+    return parentIndex * 2 + 2;
+  }
+  #getParentIndex(childIndex) {
+    return Math.floor((childIndex - 1) / 2);
+  }
+
+  peek() {
     return this.heap[0];
+  }
+}
+
+class PriorityQueue extends Heap {
+  constructor() {
+    super();
+  }
+
+  isEmpty() {
+    return this.heap.length <= 0;
   }
 }
 
