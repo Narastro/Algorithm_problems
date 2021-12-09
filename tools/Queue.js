@@ -14,25 +14,18 @@ class Queue {
 
   push(value) {
     const nodeQueue = new NodeQueue(value);
-    if (this.size == 0) {
-      this.head = nodeQueue;
-    } else {
-      this.tail.next = nodeQueue;
-    }
+    if (!this.size) this.head = nodeQueue;
+    else this.tail.next = nodeQueue;
     this.tail = nodeQueue;
     this.size++;
   }
 
   popleft() {
-    if (this.size == 0) {
-      return null;
-    }
+    if (!this.size) return null;
     const value = this.head.value;
     this.head = this.head.next;
     this.size--;
-    if (this.size == 0) {
-      this.tail = null;
-    }
+    if (!this.size) this.tail = null;
     return value;
   }
 
