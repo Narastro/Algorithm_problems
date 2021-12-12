@@ -12,7 +12,13 @@ const timeToMillisec = (str) => {
 };
 
 const findStartTime = (endTime, time) =>
-  endTime - Number(time.split("s")[0]) * 1000;
+  endTime - (Number(time.split("s")[0]) * 1000 - 1);
+
+const compareTimeInRange = (time, log, duration) =>
+  log <= time && time < log + duration;
+
+const compareTimeOutRange = (start, end, log, duration) =>
+  log >= start && log + duration <= end;
 
 const solution = (lines) => {
   const logs = [];
@@ -27,6 +33,15 @@ const solution = (lines) => {
   });
 
   logs.sort();
-  logs.forEach((log) => {});
-  return logs;
+  logs.forEach((log) => {
+    const DURATION = 1000;
+    const count = timeInfo.filter(
+      ({ startTime, endTime }) =>
+        compareTimeInRange(startTime, log, DURATION) ||
+        compareTimeInRange(endTime, log, DURATION) ||
+        compareTimeOutRange(startTime, endTime, log, DURATION)
+    ).length;
+    maxCount = Math.max(maxCount, count);
+  });
+  return maxCount;
 };
