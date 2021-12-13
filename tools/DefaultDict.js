@@ -6,11 +6,11 @@ class DefaultDict {
     this.dict = new Map();
   }
 
-  get(value) {
-    if (!this.dict.has(value)) {
+  get(key) {
+    if (!this.dict.has(key)) {
       if (this.type === "int") return 0;
-      else return []; // 여기서 push를 하면 반영이 안되는데, 조심하는 수 밖에 없을까?
-    } else return this.dict.get(value);
+      else return []; // 여기서 push를 하면 반영이 안됨을 주의하기!
+    } else return this.dict.get(key);
   }
 
   set(key, value) {
