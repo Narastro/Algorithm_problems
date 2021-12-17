@@ -9,7 +9,7 @@ class DefaultDict {
   get(key) {
     if (!this.dict.has(key)) {
       if (this.type === "int") return 0;
-      else return []; // 여기서 push를 하면 반영이 안됨을 주의하기!
+      else return [];
     } else return this.dict.get(key);
   }
 
