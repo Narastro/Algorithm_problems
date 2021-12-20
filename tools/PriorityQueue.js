@@ -1,19 +1,20 @@
+// 힙의 특징 : 부모가 항상 자식보다 작거나 같은 트리 기반의 자료 구조
 class Node {
-  constructor(value) {
+  constructor(key, value) {
+    this.node = key;
     this.value = value;
   }
 }
 
-// 힙의 특징 : 부모가 항상 자식보다 작거나 같은 트리 기반의 자료 구조
 class Heap {
   constructor() {
     this.heap = [];
   }
 
-  push(value) {
-    const node = new Node(value);
+  push(key, value) {
+    const node = new Node(key, value);
     this.heap.push(node);
-    this.#heapifyUp();
+    this.heapifyUp();
   }
 
   pop() {
@@ -24,17 +25,17 @@ class Heap {
     if (count === 1) this.heap = [];
     else {
       this.heap[0] = this.heap.pop();
-      this.#heapifyDown();
+      this.heapifyDown();
     }
     return rootNode;
   }
 
-  #heapifyUp() {
+  heapifyUp() {
     let index = this.heap.length - 1;
     const lastInsertedNode = this.heap[index];
 
     while (index > 0) {
-      const parentIndex = this.#getParentIndex(index);
+      const parentIndex = this.getParentIndex(index);
       if (this.heap[parentIndex].value > lastInsertedNode.value) {
         this.heap[index] = this.heap[parentIndex];
         index = parentIndex;
@@ -44,14 +45,14 @@ class Heap {
     this.heap[index] = lastInsertedNode;
   }
 
-  #heapifyDown() {
+  heapifyDown() {
     let index = 0;
     const count = this.heap.length;
     const rootNode = this.heap[index];
 
-    while (this.#getLeftChildIndex(index) < count) {
-      const leftChildIndex = this.#getLeftChildIndex(index);
-      const rightChildIndex = this.#getRightChildIndex(index);
+    while (this.getLeftChildIndex(index) < count) {
+      const leftChildIndex = this.getLeftChildIndex(index);
+      const rightChildIndex = this.getRightChildIndex(index);
       const smallerChildIndex =
         rightChildIndex < count &&
         this.heap[rightChildIndex].value < this.heap[leftChildIndex].value
@@ -67,13 +68,13 @@ class Heap {
     this.heap[index] = rootNode;
   }
 
-  #getLeftChildIndex(parentIndex) {
+  getLeftChildIndex(parentIndex) {
     return parentIndex * 2 + 1;
   }
-  #getRightChildIndex(parentIndex) {
+  getRightChildIndex(parentIndex) {
     return parentIndex * 2 + 2;
   }
-  #getParentIndex(childIndex) {
+  getParentIndex(childIndex) {
     return Math.floor((childIndex - 1) / 2);
   }
 
