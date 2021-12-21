@@ -6,6 +6,8 @@ class Node {
   }
 }
 
+//주의!! 갖다 쓸 때 key가 필요한지 구별해야됨!
+
 class Heap {
   constructor() {
     this.heap = [];
