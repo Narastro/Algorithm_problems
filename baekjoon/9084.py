@@ -1,5 +1,5 @@
-# 2021.12.24. Baekjoon algorithm problem #2110
-# 공유기 설치
+# 2021.12.25. Baekjoon algorithm problem #9084
+# 동전
 
 T = int(input())
 for _ in range(T):
