@@ -2,9 +2,7 @@
 
 ## 현재 집중
 
-`JavaScript`로 프로그래머스 문제풀이
-
-### [문제 풀이 확인하기](https://github.com/Narastro/Algorithm_problems/issues)
+`Python`로 유형별 골드  문제풀이
 
 ## Introduce
 
