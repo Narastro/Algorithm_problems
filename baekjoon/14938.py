@@ -1,6 +1,10 @@
 # 2021.11.12. Baekjoon algorithm problem #14938
 # 서강그라운드
 
+# 다익스트라 풀이 조심
+# 다익스트라에서 최대 거리가 주어진 경우 visit 방문 체크를 안 해도 된다
+# 다만 여기서는 방문한 경우 item을 줍지 않도록 로직만 살짝 변경해주면 된다
+
 from collections import defaultdict
 import sys
 import heapq
