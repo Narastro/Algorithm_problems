@@ -1,4 +1,4 @@
-# 2021.11.12. Baekjoon algorithm problem #14938
+# 2021.12.28. Baekjoon algorithm problem #14938
 # 서강그라운드
 
 # 다익스트라 풀이 조심
