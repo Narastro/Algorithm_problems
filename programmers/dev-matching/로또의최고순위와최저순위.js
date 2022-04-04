@@ -1,5 +1,5 @@
 /* 2022.4.4. 2021 Dev-Matching: 웹 백엔드
- * 로또의 최고 순위와 최저 순위
+ * 로또의 최고 순위와 최저 순위;
  */
 
 function solution(lottos, win_nums) {
